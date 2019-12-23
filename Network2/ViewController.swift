@@ -9,12 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let router = Router<UserInfoRequest, UserInfoResponse>()
+        let urlInput = UserInfo.URLInput(id: "000")
+        router.get(with: urlInput) { (output: UserInfo.Output?) in
+            guard let output = output else { return }
+            print(output.name)
+        }
     }
-
-
 }
-
